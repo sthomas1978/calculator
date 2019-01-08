@@ -21,8 +21,8 @@ namespace Calculator.Console
 
         private static bool IsNumeric(string value)
         {
-            int numeric = 0;
-            return int.TryParse(value, out numeric);
+            double numeric = 0;
+            return double.TryParse(value, out numeric);
         }
 
         public static Component Parse(string value)
@@ -55,11 +55,11 @@ namespace Calculator.Console
 
     public class Operand : Component
     {
-        public int Value { get; }
+        public double Value { get; }
 
         public Operand(string symbol) : base(symbol)
         {
-            Value = int.Parse(symbol.ToString());
+            Value = double.Parse(symbol.ToString());
         }
     }
 
@@ -88,14 +88,14 @@ namespace Calculator.Console
             return this.Prescedence <= op.Prescedence;
         }
 
-        public abstract int Calculate(int left, int right);
+        public abstract double Calculate(double left, double right);
     }
 
     public class AddOperator : Operator
     {
         public AddOperator() : base(AddOperator, 2) { }
 
-        public override int Calculate(int left, int right)
+        public override double Calculate(double left, double right)
         {
             return left + right;
         }
@@ -105,7 +105,7 @@ namespace Calculator.Console
     {
         public SubtractOperator() : base(SubtractOperator, 2) { }
 
-        public override int Calculate(int left, int right)
+        public override double Calculate(double left, double right)
         {
             return left - right;
         }
@@ -115,7 +115,7 @@ namespace Calculator.Console
     {
         public MultiplyOperator() : base(MultiplyOperator, 3) { }
 
-        public override int Calculate(int left, int right)
+        public override double Calculate(double left, double right)
         {
             return left * right;
         }
@@ -125,7 +125,7 @@ namespace Calculator.Console
     {
         public DivideOperator() : base(DivideOperator, 3) { }
 
-        public override int Calculate(int left, int right)
+        public override double Calculate(double left, double right)
         {
             return left / right;
         }
@@ -135,7 +135,7 @@ namespace Calculator.Console
     {
         public PowerOperator() : base(PowerOperator, 4) { }
 
-        public override int Calculate(int left, int right)
+        public override double Calculate(double left, double right)
         {
             return (int)Math.Pow(left, right);
         }

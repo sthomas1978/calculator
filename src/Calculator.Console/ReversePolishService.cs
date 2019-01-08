@@ -12,7 +12,7 @@ namespace Calculator.Console
             var operatorStack = new Stack<Component>();
             var rpComponents = new List<Component>();
 
-            infixExpression.Split(' ').ToList().ForEach(c =>
+            infixExpression.GetNextComponent().ToList().ForEach(c =>
             {
                 var component = Component.Parse(c);
 
@@ -60,9 +60,9 @@ namespace Calculator.Console
             return operatorStack.Count > 0;
         }
 
-        public int EvaluateExpression(string rpnExpression)
+        public double EvaluateExpression(string rpnExpression)
         {
-            var operatorStack = new Stack<int>();
+            var operandStack = new Stack<double>();
 
             rpnExpression.Split(' ').ToList().ForEach(c =>
             {
@@ -70,22 +70,21 @@ namespace Calculator.Console
 
                 if (component is Operand)
                 {
-                    operatorStack.Push(int.Parse(c));
+                    operandStack.Push(double.Parse(c));
                 }
                 else
                 {
-                    var right = operatorStack.Pop();
-                    var left = operatorStack.Pop();
+                    var right = operandStack.Pop();
+                    var left = operandStack.Pop();
 
                     var result = ((Operator)component).Calculate(left, right);
 
-                    operatorStack.Push(result);
+                    operandStack.Push(result);
                 }
             });
 
-            return operatorStack.Pop();
+            return operandStack.Pop();
         }
-
 
     }
 }
