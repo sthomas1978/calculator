@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{242664F6-3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Console", "src\Calculator.Console\Calculator.Console.csproj", "{90B03CA3-967A-4112-B557-5084CBD98259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Console.Tests", "Calculator.Console.Tests\Calculator.Console.Tests.csproj", "{0E2D314C-F58E-4B4F-8ECC-1C3622998D85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Console.Tests", "test\Calculator.Console.Tests\Calculator.Console.Tests.csproj", "{0E2D314C-F58E-4B4F-8ECC-1C3622998D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
